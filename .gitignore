@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# python
+__pycache__/
+*.pyc
+.venv/
+env/
+
+# node
+node_modules/
+.next/
+out/
+
+# env files
+.env
+.env.*
+
+# logs
+*.log
+
+# IDE files
+.vscode/
+
+# build/test
+.coverage
+pytest_cache/
+
+# database
+*.db
