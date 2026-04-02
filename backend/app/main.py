@@ -36,5 +36,18 @@ def get_products(
     in_stock: Optional[bool] = None,
     db: Session = Depends(get_db),
 ) -> list[Product]:
-    products = db.query(Product).all()
+    query = db.query(Product) #start with all products
+    #filters narrow query only if user provided that filter
+    #no query parameters = all products returned
+    if retailer is not None:
+        query = query.filter(Product.retailer == retailer)
+    if category is not None:
+        query = query.filter(Product.category == category)
+    if min_price is not None:
+        query = query.filter(Product.price >= min_price)
+    if max_price is not None:
+        query = query.filter(Product.price <= max_price)
+    if in_stock is not None:
+        query = query.filter(Product.in_stock == in_stock)
+    products = query.all()
     return products
