@@ -1,0 +1,45 @@
+
+[
+  {
+    "id": "a-101",
+    "title": "Classic Cotton T-Shirt",
+    "brand": "Northline",
+    "category": "tops",
+    "color": "blue",
+    "price_usd": 24.99,
+    "material": "100% cotton",
+    "image": "https://example.com/images/a101.jpg",
+    "url": "https://example.com/products/a101",
+    "rating": 4.4,
+    "reviews": 120,
+    "in_stock": true
+  },
+  {
+    "id": "a-102",
+    "title": "Relaxed Fit Hoodie",
+    "brand": "Northline",
+    "category": "outerwear",
+    "color": "gray",
+    "price_usd": 54.5,
+    "material": "cotton blend",
+    "image": "https://example.com/images/a102.jpg",
+    "url": "https://example.com/products/a102",
+    "rating": 4.7,
+    "reviews": 86,
+    "in_stock": true
+  },
+  {
+    "id": "a-103",
+    "title": "Everyday Joggers",
+    "brand": "Northline",
+    "category": "bottoms",
+    "color": "black",
+    "price_usd": 39.0,
+    "material": "polyester blend",
+    "image": "https://example.com/images/a103.jpg",
+    "url": "https://example.com/products/a103",
+    "rating": 4.2,
+    "reviews": 64,
+    "in_stock": false
+  }
+]

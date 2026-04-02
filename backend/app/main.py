@@ -1,3 +1,5 @@
+from typing import List
+
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 
@@ -5,6 +7,7 @@ from app.db.base import Base
 from app.db.dependencies import get_db
 from app.db.session import engine
 from app.models.product import Product
+from app.schemas.product import ProductResponse
 
 import app.db.init_db  # noqa: F401
 
@@ -22,3 +25,9 @@ def read_root() -> dict[str, str]:
 def get_product_count(db: Session = Depends(get_db)) -> dict[str, int]:
     count = db.query(Product).count()
     return {"count": count}
+
+
+@app.get("/products", response_model=List[ProductResponse])
+def get_products(db: Session = Depends(get_db)) -> list[Product]:
+    products = db.query(Product).all()
+    return products

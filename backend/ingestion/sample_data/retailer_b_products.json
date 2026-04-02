@@ -1,0 +1,44 @@
+[
+  {
+    "sku": "b-201",
+    "name": "Soft Knit Sweater",
+    "maker": "Urban Coast",
+    "type": "tops",
+    "shade": "cream",
+    "price": "44.00",
+    "fabric": "acrylic",
+    "image_url": "https://example.com/images/b201.jpg",
+    "product_link": "https://example.com/products/b201",
+    "stars": 4.1,
+    "review_count": 48,
+    "available": true
+  },
+  {
+    "sku": "b-202",
+    "name": "Straight Leg Jeans",
+    "maker": "Urban Coast",
+    "type": "bottoms",
+    "shade": "dark wash",
+    "price": "59.99",
+    "fabric": "denim",
+    "image_url": "https://example.com/images/b202.jpg",
+    "product_link": "https://example.com/products/b202",
+    "stars": 4.5,
+    "review_count": 102,
+    "available": true
+  },
+  {
+    "sku": "b-203",
+    "name": "Quilted Vest",
+    "maker": "Urban Coast",
+    "type": "outerwear",
+    "shade": "olive",
+    "price": "68.00",
+    "fabric": "nylon",
+    "image_url": "https://example.com/images/b203.jpg",
+    "product_link": "https://example.com/products/b203",
+    "stars": 4.0,
+    "review_count": 31,
+    "available": false
+  }
+]
