@@ -3,6 +3,8 @@ from typing import List
 from fastapi import Depends, FastAPI
 from sqlalchemy import desc
 from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from app.db.base import Base
 from app.db.dependencies import get_db
@@ -14,6 +16,13 @@ from typing import List, Optional
 import app.db.init_db
 
 app = FastAPI(title="Apparel Aggregation Engine API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 Base.metadata.create_all(bind=engine)
 
