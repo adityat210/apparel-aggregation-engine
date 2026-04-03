@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Product = {
   id: number;
@@ -25,11 +25,34 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [retailer, setRetailer] = useState("");
+  const [category, setCategory] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [inStockOnly, setInStockOnly] = useState(false);
+
+  const retailerOptions = useMemo(() => ["retailer_a", "retailer_b"], []);
+  const categoryOptions = useMemo(() => ["tops", "outerwear", "bottoms"], []);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setIsLoading(true);
+        setError(null);
+
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-        const response = await fetch(`${baseUrl}/products`);
+        const params = new URLSearchParams();
+
+        if (retailer) params.set("retailer", retailer);
+        if (category) params.set("category", category);
+        if (minPrice) params.set("min_price", minPrice);
+        if (maxPrice) params.set("max_price", maxPrice);
+        if (inStockOnly) params.set("in_stock", "true");
+
+        const queryString = params.toString();
+        const url = queryString ? `${baseUrl}/products?${queryString}` : `${baseUrl}/products`;
+
+        const response = await fetch(url);
 
         if (!response.ok) {
           throw new Error("Failed to fetch products.");
@@ -46,13 +69,119 @@ export default function HomePage() {
     };
 
     fetchProducts();
-  }, []);
+  }, [retailer, category, minPrice, maxPrice, inStockOnly]);
+
+  const resetFilters = () => {
+    setRetailer("");
+    setCategory("");
+    setMinPrice("");
+    setMaxPrice("");
+    setInStockOnly(false);
+  };
 
   return (
     <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
       <h1 style={{ marginBottom: "0.5rem" }}>Apparel Aggregation & Discovery Engine</h1>
-      <p style={{ marginBottom: "2rem", color: "#555" }}>
+      <p style={{ marginBottom: "1.5rem", color: "#555" }}>
         Browse apparel products aggregated from multiple retailers.
+      </p>
+
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: "0.75rem",
+          marginBottom: "1.5rem",
+          padding: "1rem",
+          border: "1px solid #333",
+          borderRadius: "12px",
+          backgroundColor: "#111",
+        }}
+      >
+        <div>
+          <label style={{ display: "block", marginBottom: "0.35rem" }}>Retailer</label>
+          <select
+            value={retailer}
+            onChange={(e) => setRetailer(e.target.value)}
+            style={{ width: "100%", padding: "0.6rem", borderRadius: "8px" }}
+          >
+            <option value="">All retailers</option>
+            {retailerOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label style={{ display: "block", marginBottom: "0.35rem" }}>Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            style={{ width: "100%", padding: "0.6rem", borderRadius: "8px" }}
+          >
+            <option value="">All categories</option>
+            {categoryOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label style={{ display: "block", marginBottom: "0.35rem" }}>Min Price</label>
+          <input
+            type="number"
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+            placeholder="0"
+            style={{ width: "100%", padding: "0.6rem", borderRadius: "8px" }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: "block", marginBottom: "0.35rem" }}>Max Price</label>
+          <input
+            type="number"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+            placeholder="100"
+            style={{ width: "100%", padding: "0.6rem", borderRadius: "8px" }}
+          />
+        </div>
+
+        <div style={{ display: "flex", alignItems: "end" }}>
+          <label style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+            <input
+              type="checkbox"
+              checked={inStockOnly}
+              onChange={(e) => setInStockOnly(e.target.checked)}
+            />
+            In stock only
+          </label>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "end" }}>
+          <button
+            onClick={resetFilters}
+            style={{
+              width: "100%",
+              padding: "0.7rem",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              fontWeight: 600,
+            }}
+          >
+            Reset Filters
+          </button>
+        </div>
+      </section>
+
+      <p style={{ marginBottom: "1rem", color: "#aaa" }}>
+        Showing {products.length} products
       </p>
 
       {isLoading && <p>Loading products...</p>}
@@ -73,8 +202,8 @@ export default function HomePage() {
                 border: "1px solid #ddd",
                 borderRadius: "12px",
                 padding: "1rem",
-                backgroundColor: "#fff",
-                color: "#111",
+                backgroundColor: "#ffffff",
+                color: "#111111",
                 boxShadow: "0 2px 6px rgba(0, 0, 0, 0.06)",
               }}
             >
