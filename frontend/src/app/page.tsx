@@ -30,6 +30,7 @@ export default function HomePage() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
+  const [sortBy, setSortBy] = useState("");
 
   const retailerOptions = useMemo(() => ["retailer_a", "retailer_b"], []);
   const categoryOptions = useMemo(() => ["tops", "outerwear", "bottoms"], []);
@@ -48,6 +49,7 @@ export default function HomePage() {
         if (minPrice) params.set("min_price", minPrice);
         if (maxPrice) params.set("max_price", maxPrice);
         if (inStockOnly) params.set("in_stock", "true");
+        if (sortBy) params.set("sort_by", sortBy);
 
         const queryString = params.toString();
         const url = queryString ? `${baseUrl}/products?${queryString}` : `${baseUrl}/products`;
@@ -69,7 +71,7 @@ export default function HomePage() {
     };
 
     fetchProducts();
-  }, [retailer, category, minPrice, maxPrice, inStockOnly]);
+  }, [retailer, category, minPrice, maxPrice, inStockOnly, sortBy]);
 
   const resetFilters = () => {
     setRetailer("");
@@ -77,6 +79,7 @@ export default function HomePage() {
     setMinPrice("");
     setMaxPrice("");
     setInStockOnly(false);
+    setSortBy("");
   };
 
   return (
@@ -151,6 +154,21 @@ export default function HomePage() {
             style={{ width: "100%", padding: "0.6rem", borderRadius: "8px" }}
           />
         </div>
+
+        <div>
+          <label style={{ display: "block", marginBottom: "0.35rem" }}>Sort By</label>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            style={{ width: "100%", padding: "0.6rem", borderRadius: "8px" }}
+          >
+            <option value="">Default order</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+            <option value="rating_desc">Rating: High to Low</option>
+          </select>
+        </div>
+
 
         <div style={{ display: "flex", alignItems: "end" }}>
           <label style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
