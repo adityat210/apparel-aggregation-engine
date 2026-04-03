@@ -1,6 +1,7 @@
 from typing import List
 
 from fastapi import Depends, FastAPI
+from sqlalchemy import desc
 from sqlalchemy.orm import Session
 
 from app.db.base import Base
@@ -32,6 +33,7 @@ def get_products(
     retailer: Optional[str] = None,
     category: Optional[str] = None,
     min_price: Optional[float] = None,
+    sort_by: Optional[str] = None,
     max_price: Optional[float] = None,
     in_stock: Optional[bool] = None,
     db: Session = Depends(get_db),
@@ -49,5 +51,14 @@ def get_products(
         query = query.filter(Product.price <= max_price)
     if in_stock is not None:
         query = query.filter(Product.in_stock == in_stock)
+
+    #sort by price ascending, price descending, or rating descending if provided sort_by
+    if sort_by == "price_asc":
+        query = query.order_by(Product.price)
+    elif sort_by == "price_desc":
+        query = query.order_by(desc(Product.price))
+    elif sort_by == "rating_desc":
+        query = query.order_by(desc(Product.rating))
+
     products = query.all()
     return products
