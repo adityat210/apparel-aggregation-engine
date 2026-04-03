@@ -35,8 +35,6 @@ def test_products_route_filters_by_category() -> None:
     for product in products:
         assert product["category"] == "tops"
 
-
-
 def test_products_route_sorts_by_price_ascending() -> None:
     response = client.get("/products?sort_by=price_asc")
     assert response.status_code == 200
