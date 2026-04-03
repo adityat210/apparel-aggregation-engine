@@ -1,0 +1,9 @@
+#helps docker build cleaner
+
+.venv
+__pycache__
+.pytest_cache
+app.db
+*.pyc
+.env
+
