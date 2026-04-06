@@ -1,0 +1,44 @@
+[
+  {
+    "style_id": "f-601",
+    "name_text": "Organic Cotton Henley",
+    "brand_text": "Cedar Row",
+    "type_name": "tops",
+    "color_text": "forest",
+    "amount": "36.00",
+    "fabric_text": "organic cotton",
+    "image": "https://example.com/images/f601.jpg",
+    "url": "https://example.com/products/f601",
+    "rating": 4.2,
+    "reviews": 22,
+    "in_stock": true
+  },
+  {
+    "style_id": "f-602",
+    "name_text": "Wool Blend Coat",
+    "brand_text": "Cedar Row",
+    "type_name": "outerwear",
+    "color_text": "camel",
+    "amount": "98.00",
+    "fabric_text": "wool blend",
+    "image": "https://example.com/images/f602.jpg",
+    "url": "https://example.com/products/f602",
+    "rating": 4.7,
+    "reviews": 31,
+    "in_stock": true
+  },
+  {
+    "style_id": "f-603",
+    "name_text": "Slim Fit Corduroy Pants",
+    "brand_text": "Cedar Row",
+    "type_name": "bottoms",
+    "color_text": "rust",
+    "amount": "49.50",
+    "fabric_text": "corduroy",
+    "image": "https://example.com/images/f603.jpg",
+    "url": "https://example.com/products/f603",
+    "rating": 4.1,
+    "reviews": 17,
+    "in_stock": false
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "product_code": "c-301",
+    "product_name": "Textured Crewneck Sweater",
+    "label": "Harbor & Pine",
+    "group": "tops",
+    "tone": "beige",
+    "sale_price": 48.0,
+    "fabric_type": "cotton blend",
+    "img_src": "https://example.com/images/c301.jpg",
+    "product_page": "https://example.com/products/c301",
+    "avg_rating": 4.3,
+    "num_reviews": 52,
+    "stocked": true
+  },
+  {
+    "product_code": "c-302",
+    "product_name": "Utility Overshirt",
+    "label": "Harbor & Pine",
+    "group": "outerwear",
+    "tone": "navy",
+    "sale_price": 62.0,
+    "fabric_type": "canvas",
+    "img_src": "https://example.com/images/c302.jpg",
+    "product_page": "https://example.com/products/c302",
+    "avg_rating": 4.5,
+    "num_reviews": 34,
+    "stocked": true
+  },
+  {
+    "product_code": "c-303",
+    "product_name": "Tapered Chinos",
+    "label": "Harbor & Pine",
+    "group": "bottoms",
+    "tone": "khaki",
+    "sale_price": 46.5,
+    "fabric_type": "cotton twill",
+    "img_src": "https://example.com/images/c303.jpg",
+    "product_page": "https://example.com/products/c303",
+    "avg_rating": 4.0,
+    "num_reviews": 29,
+    "stocked": false
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "item_id": "d-401",
+    "title": "Performance Quarter Zip",
+    "brand_name": "Summit Lane",
+    "category_name": "tops",
+    "color_name": "charcoal",
+    "price_value": "58.00",
+    "material_name": "polyester",
+    "image_path": "https://example.com/images/d401.jpg",
+    "item_url": "https://example.com/products/d401",
+    "rating_value": 4.6,
+    "reviews_total": 77,
+    "is_available": true
+  },
+  {
+    "item_id": "d-402",
+    "title": "Lightweight Puffer Jacket",
+    "brand_name": "Summit Lane",
+    "category_name": "outerwear",
+    "color_name": "black",
+    "price_value": "89.00",
+    "material_name": "nylon",
+    "image_path": "https://example.com/images/d402.jpg",
+    "item_url": "https://example.com/products/d402",
+    "rating_value": 4.8,
+    "reviews_total": 63,
+    "is_available": true
+  },
+  {
+    "item_id": "d-403",
+    "title": "Stretch Training Pants",
+    "brand_name": "Summit Lane",
+    "category_name": "bottoms",
+    "color_name": "slate",
+    "price_value": "52.00",
+    "material_name": "polyester blend",
+    "image_path": "https://example.com/images/d403.jpg",
+    "item_url": "https://example.com/products/d403",
+    "rating_value": 4.2,
+    "reviews_total": 41,
+    "is_available": false
+  }
+]
