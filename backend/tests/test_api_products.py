@@ -14,7 +14,7 @@ def test_products_count_route() -> None:
     assert response.status_code == 200
 
     products = response.json()
-    assert products == {"count": 6}
+    assert products == {"count": 18}
 
 def test_products_route_filters_by_retailer() -> None:
     response = client.get("/products?retailer=retailer_a")
@@ -31,7 +31,7 @@ def test_products_route_filters_by_category() -> None:
     assert response.status_code == 200
 
     products = response.json()
-    assert len(products) == 2
+    assert len(products) == 6
     for product in products:
         assert product["category"] == "tops"
 
